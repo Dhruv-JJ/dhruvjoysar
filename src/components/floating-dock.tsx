@@ -1,16 +1,7 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import {
-  Moon,
-  Sun,
-  LucideIcon,
-  X,
-  Mail,
-  Briefcase,
-} from "lucide-react";
+import { Mail } from "lucide-react";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 
 const GithubIcon = ({ className }: { className?: string }) => (
   <svg
@@ -24,14 +15,19 @@ const GithubIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const LinkedInIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    stroke="none"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+);
+
 export function FloatingDock() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
   const dockItems: Array<{
     icon: any;
     href: string;
@@ -45,22 +41,17 @@ export function FloatingDock() {
       target: "_blank",
     },
     {
-      icon: Briefcase,
+      icon: LinkedInIcon,
       href: "https://linkedin.com/in/dhruvjoysar",
       label: "LinkedIn",
       target: "_blank",
     },
-  
     {
       icon: Mail,
       href: "mailto:dhruvjoysar@gmail.com",
       label: "Email",
     },
   ];
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <motion.div
@@ -69,7 +60,7 @@ export function FloatingDock() {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50"
     >
-      <div className="flex items-center gap-1 px-4 py-3 rounded-full bg-background/50 backdrop-blur-md border border-border">
+      <div className="glass flex items-center gap-1 px-4 py-3 rounded-full shadow-lg shadow-black/20">
         {dockItems.map((item, index) => (
           <motion.a
             key={index}
@@ -77,29 +68,13 @@ export function FloatingDock() {
             target={item.target}
             rel={item.target === "_blank" ? "noopener noreferrer" : undefined}
             title={item.label}
-            whileHover={{ scale: 1.2 }}
+            whileHover={{ scale: 1.2, y: -2 }}
             whileTap={{ scale: 0.9 }}
-            className="p-2 rounded-full hover:bg-foreground/10 transition-colors text-foreground"
+            className="p-2.5 rounded-full hover:bg-[var(--accent-glow)] transition-all duration-200 text-[var(--muted-foreground)] hover:text-[var(--accent-light)]"
           >
             <item.icon className="w-5 h-5" />
           </motion.a>
         ))}
-
-        <div className="w-px h-6 bg-border mx-1" />
-
-        <motion.button
-          onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ scale: 0.9 }}
-          className="p-2 rounded-full hover:bg-foreground/10 transition-colors text-foreground"
-          title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-        >
-          {resolvedTheme === "dark" ? (
-            <Sun className="w-5 h-5" />
-          ) : (
-            <Moon className="w-5 h-5" />
-          )}
-        </motion.button>
       </div>
     </motion.div>
   );

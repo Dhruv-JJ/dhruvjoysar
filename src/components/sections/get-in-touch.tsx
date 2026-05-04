@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 
 export function GetInTouchSection() {
   return (
@@ -19,18 +18,20 @@ export function GetInTouchSection() {
         viewport={{ once: true }}
         className="mb-6"
       >
-        <Badge>Contact</Badge>
+        <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[var(--card-bg)] border border-[var(--card-border)] text-[var(--accent-light)]">
+          Contact
+        </span>
       </motion.div>
 
-      <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-foreground">
+      <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-[var(--foreground)]">
         Get in Touch
       </h2>
 
-      <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+      <p className="text-lg text-[var(--muted-foreground)] mb-8 max-w-2xl mx-auto leading-relaxed">
         Want to chat? Feel free to reach out via{" "}
         <a
           href="mailto:dhruvjoysar@gmail.com"
-          className="text-blue-500 hover:underline transition-colors"
+          className="accent-link"
         >
           email
         </a>{" "}
@@ -39,20 +40,21 @@ export function GetInTouchSection() {
           href="https://linkedin.com/in/dhruvjoysar"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-blue-500 hover:underline transition-colors"
+          className="accent-link"
         >
           LinkedIn
         </a>
         . I'm always open to discussing new projects and opportunities.
       </p>
 
-      <motion.button
+      <motion.a
+        href="mailto:dhruvjoysar@gmail.com"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="px-8 py-3 bg-primary text-primary-foreground rounded-lg font-semibold hover:opacity-90 transition-opacity"
+        className="inline-block px-8 py-3 bg-[var(--accent)] text-white rounded-lg font-semibold hover:bg-[var(--accent-light)] hover:shadow-[0_0_20px_var(--accent-glow)] transition-all duration-300"
       >
-        Book a call
-      </motion.button>
+        Send an Email
+      </motion.a>
     </motion.section>
   );
 }

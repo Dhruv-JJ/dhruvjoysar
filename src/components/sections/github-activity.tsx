@@ -19,12 +19,15 @@ export function GitHubActivitySection() {
       viewport={{ once: true }}
       className="py-12"
     >
-      <h2 className="text-2xl font-bold mb-8 text-foreground">GitHub Activity</h2>
-      <div className="border border-border rounded-xl p-4 overflow-x-auto">
+      <h2 className="text-2xl font-bold mb-8 text-[var(--foreground)]">GitHub Activity</h2>
+      <div className="card-glow p-5 overflow-x-auto">
         {mounted ? (
-          <GitHubCalendar username="Dhruv-JJ" />
+          <GitHubCalendar
+            username="Dhruv-JJ"
+            colorScheme="dark"
+          />
         ) : (
-          <div className="h-48 bg-gray-100 dark:bg-gray-900 rounded-xl animate-pulse" />
+          <div className="h-48 bg-[var(--card-bg)] rounded-xl animate-pulse" />
         )}
       </div>
     </motion.section>

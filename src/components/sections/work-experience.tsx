@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Badge } from "@/components/ui/badge";
 
 interface WorkItem {
   role: string;
@@ -31,8 +30,8 @@ export function WorkExperienceSection() {
       viewport={{ once: true }}
       className="py-12"
     >
-      <h2 className="text-2xl font-bold mb-8 text-foreground">Work Experience</h2>
-      <div className="space-y-6">
+      <h2 className="text-2xl font-bold mb-8 text-[var(--foreground)]">Work Experience</h2>
+      <div className="space-y-4">
         {workExperience.map((item, index) => (
           <motion.div
             key={index}
@@ -40,20 +39,20 @@ export function WorkExperienceSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="flex gap-4"
+            className="card-glow flex gap-4 p-5"
           >
-            <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center flex-shrink-0 text-xl">
+            <div className="w-12 h-12 rounded-full border border-[var(--accent)]/30 bg-[var(--accent-glow)] flex items-center justify-center flex-shrink-0 text-xl">
               {item.icon}
             </div>
             <div className="flex-1">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-2">
                 <div className="flex items-center gap-3">
-                  <strong className="text-foreground">{item.role}</strong>
+                  <strong className="text-[var(--foreground)]">{item.role}</strong>
                 </div>
-                <span className="text-sm text-muted-foreground">{item.date}</span>
+                <span className="text-sm text-[var(--muted-foreground)]">{item.date}</span>
               </div>
-              <p className="text-sm text-muted-foreground mb-2">{item.company}</p>
-              <p className="text-sm text-muted-foreground">{item.description}</p>
+              <p className="text-sm text-[var(--accent-light)] mb-2 font-medium">{item.company}</p>
+              <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{item.description}</p>
             </div>
           </motion.div>
         ))}

@@ -24,8 +24,8 @@ export function SkillsSection() {
       viewport={{ once: true }}
       className="py-12"
     >
-      <h2 className="text-2xl font-bold mb-8 text-foreground">Skills</h2>
-      <div className="flex flex-wrap gap-2">
+      <h2 className="text-2xl font-bold mb-8 text-[var(--foreground)]">Skills</h2>
+      <div className="flex flex-wrap gap-2.5">
         {skills.map((skill, index) => (
           <motion.div
             key={index}
@@ -33,8 +33,9 @@ export function SkillsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
             viewport={{ once: true }}
+            whileHover={{ scale: 1.08, y: -2 }}
           >
-            <span className="inline-flex items-center bg-primary text-primary-foreground rounded-md px-3 py-1 text-sm font-medium">
+            <span className="inline-flex items-center rounded-lg px-3.5 py-1.5 text-sm font-medium border border-[var(--accent)]/20 text-[var(--accent-light)] bg-[var(--accent-glow)] hover:border-[var(--accent)]/40 hover:shadow-[0_0_15px_var(--accent-glow)] transition-all duration-200 cursor-default">
               {skill}
             </span>
           </motion.div>

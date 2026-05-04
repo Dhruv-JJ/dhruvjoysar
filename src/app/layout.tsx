@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/providers/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -12,6 +11,14 @@ export const metadata: Metadata = {
   title: "Dhruv Joysar - Developer & EXTC Engineer",
   description:
     "Electronics & Telecommunication Engineer. Building ML models, FPGA hardware, and impactful systems.",
+  keywords: [
+    "Dhruv Joysar",
+    "developer",
+    "EXTC",
+    "machine learning",
+    "FPGA",
+    "portfolio",
+  ],
 };
 
 export default function RootLayout({
@@ -20,24 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <style>{`
-          html {
-            color-scheme: light dark;
-          }
-          html.light {
-            color-scheme: light;
-          }
-          html.dark {
-            color-scheme: dark;
-          }
-        `}</style>
-      </head>
+    <html lang="en" className="dark">
       <body className={`${inter.variable} h-full antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
