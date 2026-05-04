@@ -2,14 +2,17 @@
 
 import { motion } from "framer-motion";
 
+// 1. Add 'lorLink' as an optional property (the '?')
 interface WorkItem {
   role: string;
   company: string;
   date: string;
   description: string;
   icon: string;
+  lorLink?: string; 
 }
 
+// 2. Add the path to your PDF in the data array
 const workExperience: WorkItem[] = [
   {
     role: "Growth Intern",
@@ -18,6 +21,7 @@ const workExperience: WorkItem[] = [
     description:
       "Driving platform growth by connecting clients with professional photographers via online promotion and creating digital presence across platforms like Reddit.",
     icon: "📸",
+    lorLink: "/DHRUV_JOYSAR_Growth_intern_LOR.pdf", // This looks for the file in your public folder
   },
 ];
 
@@ -53,6 +57,21 @@ export function WorkExperienceSection() {
               </div>
               <p className="text-sm text-[var(--accent-light)] mb-2 font-medium">{item.company}</p>
               <p className="text-sm text-[var(--muted-foreground)] leading-relaxed">{item.description}</p>
+              
+              {/* 3. The New LOR Button (Only renders if lorLink exists) */}
+              {item.lorLink && (
+                <div className="mt-4">
+                  <a
+                    href={item.lorLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-medium text-[var(--accent)] hover:text-[var(--accent-light)] transition-colors border border-[var(--accent)]/30 rounded-full px-4 py-1.5 bg-[var(--accent-glow)]/30 hover:bg-[var(--accent-glow)]"
+                  >
+                    📄 View Letter of Recommendation
+                  </a>
+                </div>
+              )}
+
             </div>
           </motion.div>
         ))}
