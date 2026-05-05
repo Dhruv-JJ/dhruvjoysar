@@ -48,7 +48,7 @@ export function GetInTouchSection() {
       </p>
 
       <motion.a
-        href="mailto:dhruvjoysar@gmail.com"
+        href="mailto:joysardhruv@gmail.com"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="inline-block px-8 py-3 bg-[var(--accent)] text-white rounded-lg font-semibold hover:bg-[var(--accent-light)] hover:shadow-[0_0_20px_var(--accent-glow)] transition-all duration-300"
