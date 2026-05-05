@@ -30,7 +30,7 @@ export function GetInTouchSection() {
       <p className="text-lg text-[var(--muted-foreground)] mb-8 max-w-2xl mx-auto leading-relaxed">
         Want to chat? Feel free to reach out via{" "}
         <a
-          href="mailto:dhruvjoysar@gmail.com"
+          href="mailto:joysardhruv@gmail.com"
           className="accent-link"
         >
           email
